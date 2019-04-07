@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>animation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./style.css" />
+    <script src="./drawing.js"></script>
+</head>
+
+<body>
+    <canvas id='ex7' width="1050" height="650"></canvas>
+    <script>
+        var canvas = document.getElementById('ex7')
+        var ctx = canvas.getContext('2d');
+        //>>>>>>the below saves shape of random objects<<<<<<<<<<
+        //------------------ex7-------------------------------------
+        var context = document.getElementById("ex7").getContext("2d");//ARRRAY CONTEXT
+        // asteroid shape
+        var segments = 20 + Math.random() * 5;//how many walls for asteroid
+        var shape = []; //below function builds this array containing shape of the asteroid
+        for (var i = 0; i < segments; i++) {
+            shape.push(Math.random() - 0.5);
+        }
+        var radius = 50;
+        var noise = 0.2;
+        // asteroid state
+        var x = context.canvas.width * Math.random();
+        var y = context.canvas.height * Math.random();
+        var angle = 0;
+        // asteroid movement
+        var x_speed = context.canvas.width * (Math.random() - 0.5);
+        var y_speed = context.canvas.height * (Math.random() - 0.5);
+        var rotation_speed = 2 * Math.PI * (Math.random() - 0.5);
+        //>>>>>>>>>>needed inside draw asteroid functions<<<<<<<<<<<<<<<<<<<
+
+        function frame(context) {
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            draw(ctx);
+            update();
+        }
+        function update() {
+
+        }
+        //
+        
+        //
+        function draw(ctx) {
+            modelInfo (m1);
+            draw_grid(ctx);
+        //    draw_asteroid(ctx, 200, { guide: true, rotation: x / Math.PI * 0.016 }, 0.2, x_speed, y_speed, shape);
+           // ctx.fill();
+           // ctx.stroke();
+            mouse(ctx);
+            //drawPlayerLeaflet();
+        }
+        setInterval(frame, 1000.0 / 60.0); // 60 fps
+    </script>
+</body>
+
+</html>
